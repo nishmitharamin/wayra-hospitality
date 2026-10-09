@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Wayra Hospitality | Bespoke Luxury Travel & Curated Expeditions
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              brandBlue: {
+                50: "#f0f6ff",
+                100: "#e0effe",
+                500: "#0284c7",
+                600: "#0284c7",
+                900: "#0c4a6e",
+              },
+              gold: { 400: "#fbbf24", 500: "#d97706" },
+            },
+            fontFamily: {
+              serif: ["Cinzel", "Georgia", "serif"],
+              sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body
+    class="bg-slate-950 text-slate-100 selection:bg-brandBlue-500 selection:text-white relative min-h-screen"
+  >
+    <!-- GLOBAL FIXED CINEMATIC VIDEO BACKGROUND -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-full h-full object-cover filter brightness-[0.7] scale-105"
+      >
+        <source src="/vd.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <!-- Deep immersive gradient overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/90"
+      ></div>
+    </div>
+
+    <!-- Header / Navigation with Glassmorphism -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-lg bg-slate-950/75 backdrop-blur-xl border-b border-white/10"
+      id="mainHeader"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a href="index.html#home" class="flex items-center gap-3 py-2 group">
+          <div
+            class="w-12 h-12 min-w-[3rem] min-h-[3rem] rounded-full bg-white/10 backdrop-blur-md shadow-sm border border-white/20 flex items-center justify-center overflow-hidden shrink-0"
+          >
+            <img
+              src="./src/assets/wayra logo.png"
+              alt="Wayra Hospitality Logo"
+              class="w-full h-full object-cover scale-110"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <span
+              class="font-serif text-base font-bold tracking-[0.2em] text-cyan-400 leading-tight"
+            >
+              WAYRA
+            </span>
+            <span
+              class="text-[8px] font-semibold tracking-[0.3em] text-cyan-200 uppercase"
+            >
+              HOSPITALITY
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden md:flex items-center space-x-6 text-xs font-semibold tracking-wider uppercase text-slate-300"
+        >
+          <a
+            href="index.html#home"
+            class="hover:text-cyan-400 transition-colors"
+            >Home</a
+          >
+
+          <!-- INTERNATIONAL TOURS DROPDOWN -->
+          <div class="relative group py-6">
+            <button
+              class="flex items-center gap-1 hover:text-cyan-400 transition-colors focus:outline-none cursor-pointer"
+            >
+              INTERNATIONAL TOURS
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              class="absolute top-full -left-20 w-[850px] bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-6 hidden group-hover:grid grid-cols-3 gap-6 animate-fade-in text-slate-200"
+            >
+              <div>
+                <span
+                  class="text-cyan-400 font-bold block mb-3 border-b border-white/10 pb-1 uppercase tracking-wider text-[11px]"
+                  >Regions</span
+                >
+                <div
+                  id="intlCategoriesList"
+                  class="space-y-1 text-[11px] normal-case"
+                >
+                  <button
+                    id="intl-btn-africa"
+                    onmouseover="switchInternationalTab('africa')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Africa
+                  </button>
+                  <button
+                    id="intl-btn-america"
+                    onmouseover="switchInternationalTab('america')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    America
+                  </button>
+                  <button
+                    id="intl-btn-asia"
+                    onmouseover="switchInternationalTab('asia')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Asia
+                  </button>
+                  <button
+                    id="intl-btn-australia"
+                    onmouseover="switchInternationalTab('australia')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Australia & New Zealand
+                  </button>
+                  <button
+                    id="intl-btn-europe"
+                    onmouseover="switchInternationalTab('europe')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Europe
+                  </button>
+                  <button
+                    id="intl-btn-middleEast"
+                    onmouseover="switchInternationalTab('middleEast')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Middle East
+                  </button>
+                  <button
+                    id="intl-btn-antarctica"
+                    onmouseover="switchInternationalTab('antarctica')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    Antarctica
+                  </button>
+                </div>
+              </div>
+
+              <div class="border-x border-white/10 px-4">
+                <div
+                  id="intlSubcategoriesContainer"
+                  class="space-y-1 text-[11px] text-slate-300 normal-case max-h-[320px] overflow-y-auto pr-2"
+                ></div>
+              </div>
+
+              <div>
+                <div
+                  id="intlCitiesContainer"
+                  class="space-y-1 text-[11px] text-slate-400 normal-case max-h-[320px] overflow-y-auto pr-2"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INDIAN TOURS DROPDOWN -->
+          <div class="relative group py-6">
+            <button
+              class="flex items-center gap-1 hover:text-cyan-400 transition-colors focus:outline-none cursor-pointer"
+            >
+              INDIAN TOURS <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              class="absolute top-full -left-40 w-[850px] bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-6 hidden group-hover:grid grid-cols-3 gap-6 animate-fade-in text-slate-200"
+            >
+              <div>
+                <span
+                  class="text-cyan-400 font-bold block mb-3 border-b border-white/10 pb-1 uppercase tracking-wider text-[11px]"
+                  >Indian Zones</span
+                >
+                <div
+                  id="indianCategoriesList"
+                  class="space-y-1 text-[11px] normal-case"
+                >
+                  <button
+                    id="indian-btn-northIndia"
+                    onmouseover="switchIndianTab('northIndia')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    North India
+                  </button>
+                  <button
+                    id="indian-btn-southIndia"
+                    onmouseover="switchIndianTab('southIndia')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    South India
+                  </button>
+                  <button
+                    id="indian-btn-eastNorthEast"
+                    onmouseover="switchIndianTab('eastNorthEast')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    East & North East India
+                  </button>
+                  <button
+                    id="indian-btn-westCentral"
+                    onmouseover="switchIndianTab('westCentral')"
+                    class="w-full text-left px-3 py-1.5 rounded-lg hover:bg-white/10 hover:text-cyan-400 transition-colors font-medium"
+                  >
+                    West & Central India
+                  </button>
+                </div>
+              </div>
+
+              <div class="border-x border-white/10 px-4">
+                <div
+                  id="indianSubcategoriesContainer"
+                  class="space-y-1 text-[11px] text-slate-300 normal-case max-h-[320px] overflow-y-auto pr-2"
+                ></div>
+              </div>
+
+              <div>
+                <div
+                  id="indianCitiesContainer"
+                  class="space-y-1 text-[11px] text-slate-400 normal-case max-h-[320px] overflow-y-auto pr-2"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <a href="about.html" class="hover:text-cyan-400 transition-colors"
+            >About Us</a
+          >
+          <a
+            href="index.html#contact"
+            class="hover:text-cyan-400 transition-colors"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <a
+            href="packages.html"
+            class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-md"
+          >
+            <i class="fa-solid fa-compass mr-2"></i> View Packages
+          </a>
+          <button
+            id="mobileMenuBtn"
+            onclick="toggleMobileMenu()"
+            class="md:hidden text-slate-200 hover:text-cyan-400 focus:outline-none p-2"
+          >
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-slate-950/95 backdrop-blur-md border-t border-white/10 px-6 py-6 space-y-4 text-center tracking-widest uppercase text-xs font-semibold"
+      >
+        <a
+          href="index.html#home"
+          onclick="toggleMobileMenu()"
+          class="block py-2 text-slate-200 hover:text-cyan-400"
+          >Home</a
+        >
+        <a
+          href="packages.html"
+          onclick="toggleMobileMenu()"
+          class="block py-2 text-cyan-400 font-bold"
+          >INTERNATIONAL & INDIAN TOURS</a
+        >
+        <a
+          href="about.html"
+          onclick="toggleMobileMenu()"
+          class="block py-2 text-slate-200 hover:text-cyan-400"
+          >About Us</a
+        >
+        <a
+          href="index.html#contact"
+          onclick="toggleMobileMenu()"
+          class="block py-2 text-slate-200 hover:text-cyan-400"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center pt-24 pb-12"
+    >
+      <div
+        class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white my-auto"
+      >
+        <h1
+          class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight font-serif"
+        >
+          Curated Luxury Journeys Across <br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-200 to-white"
+            >India & Beyond</span
+          >
+        </h1>
+        <p
+          class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base mb-10 leading-relaxed font-light"
+        >
+          <span id="typingText" class="border-r-2 border-cyan-300 pr-1"></span>
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="packages.html"
+            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-xl"
+          >
+            <i class="fa-solid fa-mountain-sun mr-2 text-slate-950"></i>
+            Explore All Packages
+          </a>
+          <a
+            href="about.html"
+            class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest text-white border border-white/40 hover:bg-white/10 backdrop-blur-md transition-all"
+          >
+            Discover Our Story
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS COUNTER BAR WITH GLASSMORPHISM -->
+    <section
+      class="bg-slate-900/60 backdrop-blur-xl border-y border-white/10 py-10 relative z-10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+      >
+        <div>
+          <h3
+            class="text-3xl sm:text-4xl font-serif font-bold text-cyan-400 mb-1"
+          >
+            35+
+          </h3>
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">
+            Total Destinations
+          </p>
+        </div>
+        <div>
+          <h3
+            class="text-3xl sm:text-4xl font-serif font-bold text-cyan-400 mb-1"
+          >
+            100%
+          </h3>
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">
+            Tailored Itineraries
+          </p>
+        </div>
+        <div>
+          <h3
+            class="text-3xl sm:text-4xl font-serif font-bold text-cyan-400 mb-1"
+          >
+            24/7
+          </h3>
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">
+            Concierge Support
+          </p>
+        </div>
+        <div>
+          <h3
+            class="text-3xl sm:text-4xl font-serif font-bold text-cyan-400 mb-1"
+          >
+            1:1
+          </h3>
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">
+            Dedicated Planning
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SLIDER SECTION -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <span
+          class="text-cyan-400 text-xs font-bold uppercase tracking-widest block mb-2"
+          >Explore the Magic</span
+        >
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif">
+          Featured Exclusive Tour Slide
+        </h2>
+      </div>
+      <div id="heroSliderContainer"></div>
+    </section>
+
+    <!-- TRIP CALCULATOR SECTION WITH GLASSMORPHISM (ALL LOCATIONS ENABLER) -->
+    <section id="calculator" class="py-24 relative z-10">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-white font-serif">
+            Interactive Trip Planner
+          </h2>
+          <p class="text-slate-300 text-xs mt-2">
+            Tailor your stay parameters and obtain instant estimation across all
+            global & Indian destinations
+          </p>
+        </div>
+
+        <div
+          class="p-6 sm:p-10 rounded-3xl border border-white/15 shadow-2xl bg-slate-900/80 backdrop-blur-2xl"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div>
+                <label
+                  class="block text-xs uppercase font-bold text-slate-300 mb-2"
+                  >Primary Destination (All Catalog Locations)</label
+                >
+                <select
+                  id="calcDestination"
+                  onchange="calculateTripCost()"
+                  class="w-full bg-slate-950/80 border border-white/20 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-400 font-medium max-h-60 overflow-y-auto"
+                ></select>
+              </div>
+              <div>
+                <div
+                  class="flex justify-between text-xs font-bold text-slate-300 mb-2 uppercase"
+                >
+                  <span>Duration</span>
+                  <span id="durationVal" class="text-cyan-400">5 Nights</span>
+                </div>
+                <input
+                  type="range"
+                  id="calcDuration"
+                  min="2"
+                  max="21"
+                  value="5"
+                  oninput="calculateTripCost()"
+                  class="w-full accent-cyan-400 cursor-pointer"
+                />
+              </div>
+              <div>
+                <div
+                  class="flex justify-between text-xs font-bold text-slate-300 mb-2 uppercase"
+                >
+                  <span>Guests Count</span>
+                  <span id="guestsVal" class="text-cyan-400">2 Guests</span>
+                </div>
+                <input
+                  type="range"
+                  id="calcGuests"
+                  min="1"
+                  max="10"
+                  value="2"
+                  oninput="calculateTripCost()"
+                  class="w-full accent-cyan-400 cursor-pointer"
+                />
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-brandBlue-900/90 to-slate-950/90 text-white p-6 sm:p-8 rounded-2xl flex flex-col justify-between text-center shadow-xl border border-white/10"
+            >
+              <div>
+                <p
+                  class="text-xs uppercase tracking-widest text-cyan-300 font-semibold mb-1"
+                >
+                  Estimated Investment
+                </p>
+                <h3
+                  id="calcTotalDisplay"
+                  class="text-4xl font-bold font-serif my-4 text-white"
+                >
+                  ₹5,25,000
+                </h3>
+                <p class="text-[11px] text-slate-300">
+                  Includes luxury accommodations, private concierge support, and
+                  taxes.
+                </p>
+              </div>
+              <button
+                onclick="bookCalculatedTrip()"
+                class="mt-6 w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-md cursor-pointer"
+              >
+                Reserve Estimated Itinerary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE CONTACT SECTION WITH GLASSMORPHISM -->
+    <section id="contact" class="py-24 relative z-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-cyan-400 text-xs font-bold uppercase tracking-widest block mb-2"
+            >Private Concierge Desk</span
+          >
+          <h2 class="text-3xl md:text-5xl font-serif font-bold text-white">
+            Connect With Executive Travel Concierge
+          </h2>
+          <p class="text-slate-300 text-xs mt-3">
+            Our Executive desk is available 24/7 for custom bookings.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-slate-900/80 backdrop-blur-2xl p-8 rounded-2xl border border-white/10 flex flex-col justify-between shadow-xl"
+          >
+            <div>
+              <h3 class="text-lg font-bold text-white font-serif mb-6">
+                Executive Desk
+              </h3>
+              <div class="space-y-6 text-xs text-slate-300">
+                <div>
+                  <span class="text-cyan-400 font-bold block mb-1"
+                    >24/7 VIP Line</span
+                  >
+                  <p>+91 (800) 929-7247</p>
+                </div>
+                <div>
+                  <span class="text-cyan-400 font-bold block mb-1"
+                    >Direct Executive Email</span
+                  >
+                  <p>nishmithaamin2002@gmail.com</p>
+                </div>
+                <div>
+                  <span class="text-cyan-400 font-bold block mb-1"
+                    >Headquarters</span
+                  >
+                  <p>ks Layout<br />Bengaluru, Karnataka 560001</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form
+            id="contactForm"
+            onsubmit="handleContactSubmission(event)"
+            class="lg:col-span-2 bg-slate-900/80 backdrop-blur-2xl p-8 rounded-2xl border border-white/10 space-y-6 shadow-xl"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2"
+                  >Full Name *</label
+                >
+                <input
+                  type="text"
+                  id="contactName"
+                  required
+                  placeholder="e.g. Vikramaditya Singh"
+                  class="w-full bg-slate-950/80 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-xs focus:border-cyan-400 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2"
+                  >Email Address *</label
+                >
+                <input
+                  type="email"
+                  id="contactEmail"
+                  required
+                  placeholder="vikram@domain.in"
+                  class="w-full bg-slate-950/80 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-xs focus:border-cyan-400 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2"
+                  >Phone / WhatsApp *</label
+                >
+                <input
+                  type="tel"
+                  id="contactPhone"
+                  required
+                  placeholder="+91 98765 43210"
+                  class="w-full bg-slate-950/80 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-xs focus:border-cyan-400 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2"
+                  >Tentative Travel Month *</label
+                >
+                <input
+                  type="month"
+                  id="contactDate"
+                  required
+                  class="w-full bg-slate-950/80 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-xs focus:border-cyan-400 focus:outline-none"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2"
+                >Expedition Vision & Specific Requirements</label
+              >
+              <textarea
+                id="contactMessage"
+                rows="4"
+                required
+                placeholder="Detail your preferences..."
+                class="w-full bg-slate-950/80 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-xs focus:border-cyan-400 focus:outline-none"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              id="submitBtn"
+              class="w-full py-4 bg-cyan-400 text-slate-950 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-cyan-300 transition-all shadow-md cursor-pointer"
+            >
+              <i class="fa-solid fa-paper-plane mr-2"></i> Submit Executive
+              Enquiry
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-slate-950/90 backdrop-blur-md py-10 border-t border-white/10 text-center text-xs text-slate-400 relative z-10"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p>
+          &copy; 2026 Wayra Hospitality India. All Rights Reserved. White & Blue
+          Luxury Expeditions.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Script to populate ALL locations into the calculator dropdown dynamically -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const destinationSelect = document.getElementById("calcDestination");
+        if (!destinationSelect) return;
+
+        // Comprehensive list aggregating all international and Indian destinations cataloged in Wayra
+        const allDestinationsCatalog = [
+          {
+            name: "Maasai Mara National Reserve & Serengeti",
+            basePrice: 95000,
+            region: "Africa",
+          },
+          {
+            name: "Cape Town & Winelands Luxury Escape",
+            basePrice: 85000,
+            region: "Africa",
+          },
+          {
+            name: "Victoria Falls & Okavango Delta Expedition",
+            basePrice: 110000,
+            region: "Africa",
+          },
+          {
+            name: "Patagonia Glaciers & Fjords Expedition",
+            basePrice: 120000,
+            region: "America",
+          },
+          {
+            name: "Machu Picchu & Sacred Valley Luxury Trek",
+            basePrice: 90000,
+            region: "America",
+          },
+          {
+            name: "Galapagos Yacht Cruise & Ecuadorian Andes",
+            basePrice: 105000,
+            region: "America",
+          },
+          {
+            name: "Banff & Rocky Mountaineer Rail Journey",
+            basePrice: 95000,
+            region: "America",
+          },
+          {
+            name: "Kyoto Heritage & Tokyo Modern Luxury",
+            basePrice: 115000,
+            region: "Asia",
+          },
+          {
+            name: "Bhutan Druk Path & Punakha Valley Sanctuary",
+            basePrice: 88000,
+            region: "Asia",
+          },
+          {
+            name: "Maldives Private Overwater Villa Retreat",
+            basePrice: 130000,
+            region: "Asia",
+          },
+          {
+            name: "Great Barrier Reef & Sydney Harbour Luxury",
+            basePrice: 125000,
+            region: "Australia & New Zealand",
+          },
+          {
+            name: "New Zealand Fiordland & Queenstown Alpine Lodge",
+            basePrice: 115000,
+            region: "Australia & New Zealand",
+          },
+          {
+            name: "Swiss Alps & Glacier Express Grand Tour",
+            basePrice: 110000,
+            region: "Europe",
+          },
+          {
+            name: "Amalfi Coast & Tuscan Villa Private Retreat",
+            basePrice: 95000,
+            region: "Europe",
+          },
+          {
+            name: "Lapland Northern Lights Igloo Sanctuary",
+            basePrice: 105000,
+            region: "Europe",
+          },
+          {
+            name: "Dubai Desert Royal Oasis & Burj Al Arab",
+            basePrice: 90000,
+            region: "Middle East",
+          },
+          {
+            name: "Antarctica White Desert Air Cruise & South Pole",
+            basePrice: 350000,
+            region: "Antarctica",
+          },
+          {
+            name: "Udaipur Royal Palaces & Lake Pichola Stay",
+            basePrice: 65000,
+            region: "North India",
+          },
+          {
+            name: "Kashmir Houseboat & Gulmarg Alpine Retreat",
+            basePrice: 70000,
+            region: "North India",
+          },
+          {
+            name: "Leh Ladakh High Altitude Luxury Monasteries",
+            basePrice: 75000,
+            region: "North India",
+          },
+          {
+            name: "Kerala Backwaters Private Houseboat & Munnar",
+            basePrice: 60000,
+            region: "South India",
+          },
+          {
+            name: "Coorg Coffee Estate Villa & Wayanad Sanctuary",
+            basePrice: 55000,
+            region: "South India",
+          },
+          {
+            name: "Hampi Royal Ruins & Badami Heritage Trail",
+            basePrice: 50000,
+            region: "South India",
+          },
+          {
+            name: "Meghalaya Living Root Bridges & Shillong",
+            basePrice: 65000,
+            region: "East & North East India",
+          },
+          {
+            name: "Darjeeling Tea Estates & Sikkim Himalayan Vista",
+            basePrice: 68000,
+            region: "East & North East India",
+          },
+          {
+            name: "Goa Private Coastal Villa & Yacht Charter",
+            basePrice: 70000,
+            region: "West & Central India",
+          },
+          {
+            name: "Ranthambore Tiger Safari & Jaipur Heritage",
+            basePrice: 72000,
+            region: "West & Central India",
+          },
+        ];
+
+        // Clear and populate select options grouped/labeled neatly
+        destinationSelect.innerHTML = "";
+        allDestinationsCatalogforEachSafe = allDestinationsCatalog.forEach(
+          (dest) => {
+            const opt = document.createElement("option");
+            opt.value = dest.basePrice;
+            opt.textContent = `${dest.name} (${dest.region}) — ₹${dest.basePrice.toLocaleString("en-IN")} / base`;
+            destinationSelect.appendChild(opt);
+          },
+        );
+
+        // Trigger initial calculation
+        if (typeof window.calculateTripCost === "function") {
+          window.calculateTripCost();
+        }
+      });
+    </script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
